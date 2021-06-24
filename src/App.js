@@ -1,5 +1,5 @@
 import { Row } from 'react-bootstrap';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import MovieList from './components/MovieList';
@@ -35,6 +35,18 @@ function App() {
     "Type": "movie",
     "Poster": "https://m.media-amazon.com/images/M/MV5BMDAzM2M0Y2UtZjRmZi00MzVlLTg4MjEtOTE3NzU5ZDVlMTU5XkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_SX300.jpg"
 }])
+
+  const getMovieAPIRequest = () => {
+    const url = "http://www.omdbapi.com/?s=star wars&apikey=82ddf5fd";
+    const res = await fetch(url);
+    const data = await res.json();
+
+    console.log(data);
+  }
+
+  useEffect(() => {
+    getMovieAPIRequest();
+  }, [])
 
   return (
     
